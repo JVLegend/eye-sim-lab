@@ -3,54 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OCT & Visual Field — eye-sim-lab</title>
+    <title>04 — Retinal Cartographies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <header>
-      <h1>OCT macular & Campo Visual (Humphrey 24-2)</h1>
-      <p>Gere exames sintéticos parametrizáveis para ensino e prototipagem.</p>
+    <div class="grain"></div>
+
+    <header class="masthead">
+      <div class="masthead-left">
+        <div class="numeral">04</div>
+        <div class="masthead-meta">
+          <span class="eyebrow">Eye-Sim-Lab · Synthetic Imaging</span>
+          <span class="eyebrow dim">macular OCT · visual field · parametric</span>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <span class="eyebrow dim">data · synthetic only</span>
+      </div>
     </header>
-    <main>
-      <aside class="controls">
-        <h2>OCT Macular</h2>
-        <label>Patologia
+
+    <section class="hero">
+      <h1 class="display">Retinal<br/><em>cartographies.</em></h1>
+      <p class="lede">Cortes B-scan e mapas de 24-2 gerados por equação. Nenhum paciente foi inconvenientemente dilatado. Ensine, prototipe, exporte — mas valide em dados reais antes de diagnosticar.</p>
+    </section>
+
+    <main class="layout">
+      <aside class="panel controls">
+        <div class="panel-head">
+          <span class="eyebrow">OCT · Macular</span>
+          <span class="tick">◂ ▸</span>
+        </div>
+
+        <label class="field">
+          <span class="label">Pathology</span>
           <select id="octPath">
-            <option value="normal">Normal</option>
-            <option value="edema">Edema macular cistoide</option>
-            <option value="hole">Buraco macular</option>
-            <option value="detach">Descolamento seroso</option>
+            <option value="normal">— Normal</option>
+            <option value="edema">Cystoid macular edema</option>
+            <option value="hole">Full-thickness macular hole</option>
+            <option value="detach">Serous detachment</option>
           </select>
         </label>
-        <label>Severidade <span id="octSevVal">50</span>%
+
+        <label class="field">
+          <span class="label row">Severity <em id="octSevVal" class="readout">50</em><span class="unit">%</span></span>
           <input id="octSev" type="range" min="0" max="100" value="50" />
         </label>
-        <h2>Campo Visual 24-2</h2>
-        <label>Defeito
+
+        <div class="panel-head" style="margin-top:28px;">
+          <span class="eyebrow">Visual Field · 24-2</span>
+          <span class="tick">◂ ▸</span>
+        </div>
+
+        <label class="field">
+          <span class="label">Defect pattern</span>
           <select id="vfPath">
-            <option value="normal">Normal</option>
-            <option value="arcuate">Arqueado (glaucoma)</option>
+            <option value="normal">— Normal</option>
+            <option value="arcuate">Arcuate · glaucoma</option>
             <option value="altitudinal">Altitudinal</option>
-            <option value="general">Depressão generalizada</option>
-            <option value="bitemporal">Bitemporal (chiasma)</option>
+            <option value="general">Generalized depression</option>
+            <option value="bitemporal">Bitemporal · chiasmal</option>
           </select>
         </label>
-        <label>Severidade <span id="vfSevVal">50</span>%
+
+        <label class="field">
+          <span class="label row">Severity <em id="vfSevVal" class="readout">50</em><span class="unit">%</span></span>
           <input id="vfSev" type="range" min="0" max="100" value="50" />
         </label>
-        <button id="download">Baixar PNGs</button>
+
+        <button id="download" class="btn">
+          <span class="dot"></span> Export PNGs
+        </button>
+
+        <div class="legend">
+          <p class="note"><em>"Synthetic data, honest limits."</em> Útil para ensino e prototipagem. Não treine modelos diagnósticos com isto sem validação clínica.</p>
+        </div>
       </aside>
-      <section class="stage">
-        <div class="panel">
-          <h3>OCT (B-scan)</h3>
-          <canvas id="oct" width="600" height="240"></canvas>
-        </div>
-        <div class="panel">
-          <h3>Campo Visual (pontos 24-2)</h3>
-          <svg id="vf" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg"></svg>
-        </div>
+
+      <section class="stage-stack">
+        <article class="card">
+          <div class="card-head">
+            <span class="eyebrow">B-scan · 6 mm</span>
+            <span class="eyebrow dim">foveal cross-section</span>
+          </div>
+          <div class="corner tl"></div><div class="corner tr"></div>
+          <div class="corner bl"></div><div class="corner br"></div>
+          <div class="stage">
+            <canvas id="oct" width="900" height="360"></canvas>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <span class="eyebrow">Humphrey 24-2 · dB threshold</span>
+            <span class="eyebrow dim">OD · gray-scale</span>
+          </div>
+          <div class="corner tl"></div><div class="corner tr"></div>
+          <div class="corner bl"></div><div class="corner br"></div>
+          <div class="stage svg-stage">
+            <svg id="vf" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+        </article>
       </section>
     </main>
+
+    <footer class="foot">
+      <span class="eyebrow dim">04 / 04</span>
+      <span class="eyebrow dim">eye-sim-lab · clinical editorial series</span>
+    </footer>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

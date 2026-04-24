@@ -3,41 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slit Lamp Exam — eye-sim-lab</title>
+    <title>03 — The Slit & The Gaze</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <header>
-      <h1>Biomicroscopia — Lâmpada de Fenda</h1>
-      <p>Ajuste o feixe e identifique o achado no paciente virtual.</p>
+    <div class="grain"></div>
+
+    <header class="masthead">
+      <div class="masthead-left">
+        <div class="numeral">03</div>
+        <div class="masthead-meta">
+          <span class="eyebrow">Eye-Sim-Lab · Biomicroscopy</span>
+          <span class="eyebrow dim">slit-lamp examination · clinical reasoning</span>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <span class="eyebrow dim">case · diagnostic training</span>
+      </div>
     </header>
-    <main>
-      <aside class="controls">
-        <label>Caso
+
+    <section class="hero">
+      <h1 class="display">The slit &amp; the<br/><em>gaze.</em></h1>
+      <p class="lede">Quatro pacientes virtuais. Um feixe ajustável. Ângulo, largura, intensidade — o raciocínio clínico começa pela luz. Identifique o achado antes que a imagem o denuncie.</p>
+    </section>
+
+    <main class="layout">
+      <aside class="panel controls">
+        <div class="panel-head">
+          <span class="eyebrow">Exam controls</span>
+          <span class="tick">◂ ▸</span>
+        </div>
+
+        <label class="field">
+          <span class="label">Case</span>
           <select id="caseSel"></select>
         </label>
-        <label>Largura do feixe <span id="w-val">20</span>%
-          <input id="width" type="range" min="5" max="80" value="20" />
-        </label>
-        <label>Ângulo <span id="a-val">30</span>°
-          <input id="angle" type="range" min="-60" max="60" value="30" />
-        </label>
-        <label>Intensidade <span id="i-val">70</span>%
-          <input id="intensity" type="range" min="20" max="100" value="70" />
-        </label>
-        <label>Magnificação <span id="m-val">10</span>x
-          <input id="mag" type="range" min="6" max="25" value="10" />
-        </label>
+
+        <div class="field-group">
+          <label class="field compact">
+            <span class="label row">Beam width <em id="w-val" class="readout">20</em><span class="unit">%</span></span>
+            <input id="width" type="range" min="5" max="80" value="20" />
+          </label>
+
+          <label class="field compact">
+            <span class="label row">Angle <em id="a-val" class="readout">30</em><span class="unit">°</span></span>
+            <input id="angle" type="range" min="-60" max="60" value="30" />
+          </label>
+
+          <label class="field compact">
+            <span class="label row">Intensity <em id="i-val" class="readout">70</em><span class="unit">%</span></span>
+            <input id="intensity" type="range" min="20" max="100" value="70" />
+          </label>
+
+          <label class="field compact">
+            <span class="label row">Magnification <em id="m-val" class="readout">10</em><span class="unit">×</span></span>
+            <input id="mag" type="range" min="6" max="25" value="10" />
+          </label>
+        </div>
+
         <div class="diag">
-          <p><strong>Seu diagnóstico:</strong></p>
+          <div class="panel-head">
+            <span class="eyebrow">Your diagnosis</span>
+            <span class="tick">◎</span>
+          </div>
           <div id="options"></div>
           <p id="feedback" class="feedback"></p>
         </div>
       </aside>
-      <section class="stage">
-        <canvas id="canvas" width="900" height="700"></canvas>
+
+      <section class="stage-wrap">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="stage">
+          <canvas id="canvas" width="1000" height="780"></canvas>
+        </div>
+        <div class="stage-meta">
+          <span class="eyebrow dim">↳ biomicroscope · simulated</span>
+          <span class="eyebrow dim">OD · anterior segment</span>
+        </div>
       </section>
     </main>
+
+    <footer class="foot">
+      <span class="eyebrow dim">03 / 04</span>
+      <span class="eyebrow dim">eye-sim-lab · clinical editorial series</span>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
   </body>
-  <script type="module" src="/src/main.ts"></script>
 </html>

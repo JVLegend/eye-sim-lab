@@ -3,40 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vision Simulator — eye-sim-lab</title>
+    <title>01 — Vision, Obscured</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <header>
-      <h1>Vision Simulator</h1>
-      <p>Como um paciente enxerga com diferentes patologias oftalmológicas.</p>
+    <div class="grain"></div>
+
+    <header class="masthead">
+      <div class="masthead-left">
+        <div class="numeral">01</div>
+        <div class="masthead-meta">
+          <span class="eyebrow">Eye-Sim-Lab · Simulator</span>
+          <span class="eyebrow dim">patient perspective · refractive degradation</span>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <span class="eyebrow dim">v0.1 — educational instrument</span>
+      </div>
     </header>
-    <main>
-      <section class="controls">
-        <label>Patologia
+
+    <section class="hero">
+      <h1 class="display">Vision,<br/><em>obscured.</em></h1>
+      <p class="lede">Ver pelos olhos de quem perdeu o que achávamos óbvio. Um instrumento para empatia clínica — catarata, glaucoma, DMRI, retinopatia diabética — reconstruídos em camadas sobre a imagem viva.</p>
+    </section>
+
+    <main class="layout">
+      <aside class="panel controls">
+        <div class="panel-head">
+          <span class="eyebrow">Controls</span>
+          <span class="tick">◂ ▸</span>
+        </div>
+
+        <label class="field">
+          <span class="label">Pathology</span>
           <select id="pathology">
-            <option value="normal">Normal</option>
-            <option value="cataract">Catarata</option>
-            <option value="glaucoma">Glaucoma (campo periférico)</option>
-            <option value="amd">DMRI (escotoma central)</option>
-            <option value="dr">Retinopatia Diabética</option>
+            <option value="normal">— Normal</option>
+            <option value="cataract">Cataract</option>
+            <option value="glaucoma">Glaucoma · peripheral loss</option>
+            <option value="amd">AMD · central scotoma</option>
+            <option value="dr">Diabetic Retinopathy</option>
           </select>
         </label>
-        <label>Severidade <span id="sev-val">50</span>%
+
+        <label class="field">
+          <span class="label row">Severity <em id="sev-val" class="readout">50</em></span>
           <input id="severity" type="range" min="0" max="100" value="50" />
+          <span class="scale"><i>0</i><i>25</i><i>50</i><i>75</i><i>100</i></span>
         </label>
-        <label>Imagem
+
+        <label class="field">
+          <span class="label">Image source</span>
           <input id="file" type="file" accept="image/*" />
         </label>
-        <button id="webcam">Usar webcam</button>
+
+        <button id="webcam" class="btn">
+          <span class="dot"></span> Use webcam
+        </button>
+
+        <div class="legend">
+          <p class="note"><em>"A aproximação é visual, não psicofísica."</em> Use em consulta, não em diagnóstico.</p>
+        </div>
+      </aside>
+
+      <section class="stage-wrap">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="stage">
+          <canvas id="canvas" width="1000" height="720"></canvas>
+        </div>
+        <div class="stage-meta">
+          <span class="eyebrow dim">↳ canvas · 1000 × 720</span>
+          <span class="eyebrow dim">rendered in real time</span>
+        </div>
       </section>
-      <section class="stage">
-        <canvas id="canvas" width="800" height="600"></canvas>
-      </section>
-      <footer>
-        <small>Aproximação visual com fins educacionais — não é modelo psicofísico validado.</small>
-      </footer>
     </main>
+
+    <footer class="foot">
+      <span class="eyebrow dim">01 / 04</span>
+      <span class="eyebrow dim">eye-sim-lab · clinical editorial series</span>
+    </footer>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

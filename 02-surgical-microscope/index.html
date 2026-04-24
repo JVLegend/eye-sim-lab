@@ -3,29 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Surgical Microscope — eye-sim-lab</title>
-    <style>
-      html, body { margin: 0; padding: 0; background: #000; color: #e6edf3; font-family: system-ui, sans-serif; overflow: hidden; }
-      #hud {
-        position: fixed; top: 12px; left: 12px; z-index: 10;
-        background: rgba(0,0,0,0.6); padding: 12px 16px; border-radius: 8px;
-        border: 1px solid #30363d; font-size: 13px; max-width: 280px;
-      }
-      #hud h1 { margin: 0 0 6px; font-size: 15px; }
-      #hud p { margin: 4px 0; color: #8b949e; }
-      #hud kbd { background: #161b22; padding: 1px 6px; border-radius: 3px; border: 1px solid #30363d; font-size: 11px; }
-      #stats { position: fixed; bottom: 12px; left: 12px; font-size: 12px; color: #58a6ff; background: rgba(0,0,0,0.6); padding: 6px 10px; border-radius: 4px; }
-      canvas { display: block; }
-    </style>
+    <title>02 — Under the Scope</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div id="hud">
-      <h1>Microscópio Cirúrgico</h1>
-      <p><kbd>scroll</kbd> zoom · <kbd>arrastar</kbd> orbitar</p>
-      <p><kbd>click</kbd> na lente: fragmenta cristalino (simulação de faco)</p>
-      <p><kbd>R</kbd> resetar</p>
+    <div class="grain"></div>
+
+    <!-- Top-left editorial badge -->
+    <div class="hud hud-tl">
+      <div class="numeral">02</div>
+      <div class="title-stack">
+        <h1 class="display">Under the<br/><em>scope.</em></h1>
+        <p class="caption">microscópio cirúrgico — segmento anterior · facectomia didática</p>
+      </div>
     </div>
-    <div id="stats">Fragmentos removidos: <span id="frags">0</span> / 12</div>
+
+    <!-- Top-right meta -->
+    <div class="hud hud-tr">
+      <div class="readout-grid">
+        <div class="r">
+          <span class="label">Target</span>
+          <span class="val">OD · anterior</span>
+        </div>
+        <div class="r">
+          <span class="label">Mode</span>
+          <span class="val">phaco · manual</span>
+        </div>
+        <div class="r">
+          <span class="label">Fragments</span>
+          <span class="val amber"><span id="frags">0</span> <i>/ 12</i></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reticle crosshair overlay -->
+    <svg class="reticle" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="0.12" stroke-dasharray="1 2" />
+      <circle cx="50" cy="50" r="14" fill="none" stroke="currentColor" stroke-width="0.12" />
+      <line x1="50" y1="36" x2="50" y2="44" stroke="currentColor" stroke-width="0.15" />
+      <line x1="50" y1="56" x2="50" y2="64" stroke="currentColor" stroke-width="0.15" />
+      <line x1="36" y1="50" x2="44" y2="50" stroke="currentColor" stroke-width="0.15" />
+      <line x1="56" y1="50" x2="64" y2="50" stroke="currentColor" stroke-width="0.15" />
+    </svg>
+
+    <!-- Corner ticks -->
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+
+    <!-- Bottom controls strip -->
+    <div class="hud hud-bl">
+      <div class="controls-strip">
+        <div class="ctrl"><span class="label">Scroll</span><span class="val">zoom</span></div>
+        <div class="sep">·</div>
+        <div class="ctrl"><span class="label">Drag</span><span class="val">orbit</span></div>
+        <div class="sep">·</div>
+        <div class="ctrl"><span class="label">Click</span><span class="val">phaco</span></div>
+        <div class="sep">·</div>
+        <div class="ctrl"><span class="label">R</span><span class="val">reset</span></div>
+      </div>
+    </div>
+
+    <div class="hud hud-br">
+      <span class="eyebrow dim">02 / 04 · eye-sim-lab</span>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
