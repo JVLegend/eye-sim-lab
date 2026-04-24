@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Simulator — eye-sim-lab</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Vision Simulator</h1>
+      <p>Como um paciente enxerga com diferentes patologias oftalmológicas.</p>
+    </header>
+    <main>
+      <section class="controls">
+        <label>Patologia
+          <select id="pathology">
+            <option value="normal">Normal</option>
+            <option value="cataract">Catarata</option>
+            <option value="glaucoma">Glaucoma (campo periférico)</option>
+            <option value="amd">DMRI (escotoma central)</option>
+            <option value="dr">Retinopatia Diabética</option>
+          </select>
+        </label>
+        <label>Severidade <span id="sev-val">50</span>%
+          <input id="severity" type="range" min="0" max="100" value="50" />
+        </label>
+        <label>Imagem
+          <input id="file" type="file" accept="image/*" />
+        </label>
+        <button id="webcam">Usar webcam</button>
+      </section>
+      <section class="stage">
+        <canvas id="canvas" width="800" height="600"></canvas>
+      </section>
+      <footer>
+        <small>Aproximação visual com fins educacionais — não é modelo psicofísico validado.</small>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

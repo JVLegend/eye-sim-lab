@@ -1,0 +1,32 @@
+:root {
+  --bg: #0e1116;
+  --fg: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --panel: #161b22;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+header {
+  padding: 24px 32px;
+  border-bottom: 1px solid #30363d;
+}
+header h1 { margin: 0 0 4px; font-size: 20px; }
+header p { margin: 0; color: var(--muted); font-size: 14px; }
+main { display: grid; grid-template-columns: 280px 1fr; gap: 24px; padding: 24px 32px; }
+.controls { display: flex; flex-direction: column; gap: 16px; }
+.controls label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+.controls select, .controls input[type="file"], .controls button {
+  background: var(--panel); color: var(--fg); border: 1px solid #30363d;
+  padding: 8px; border-radius: 6px; font-size: 14px;
+}
+.controls button { cursor: pointer; }
+.controls button:hover { background: #1f252c; }
+.stage { background: #000; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+canvas { max-width: 100%; height: auto; display: block; }
+footer { grid-column: 1 / -1; color: var(--muted); font-size: 12px; margin-top: 16px; }

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OCT & Visual Field — eye-sim-lab</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>OCT macular & Campo Visual (Humphrey 24-2)</h1>
+      <p>Gere exames sintéticos parametrizáveis para ensino e prototipagem.</p>
+    </header>
+    <main>
+      <aside class="controls">
+        <h2>OCT Macular</h2>
+        <label>Patologia
+          <select id="octPath">
+            <option value="normal">Normal</option>
+            <option value="edema">Edema macular cistoide</option>
+            <option value="hole">Buraco macular</option>
+            <option value="detach">Descolamento seroso</option>
+          </select>
+        </label>
+        <label>Severidade <span id="octSevVal">50</span>%
+          <input id="octSev" type="range" min="0" max="100" value="50" />
+        </label>
+        <h2>Campo Visual 24-2</h2>
+        <label>Defeito
+          <select id="vfPath">
+            <option value="normal">Normal</option>
+            <option value="arcuate">Arqueado (glaucoma)</option>
+            <option value="altitudinal">Altitudinal</option>
+            <option value="general">Depressão generalizada</option>
+            <option value="bitemporal">Bitemporal (chiasma)</option>
+          </select>
+        </label>
+        <label>Severidade <span id="vfSevVal">50</span>%
+          <input id="vfSev" type="range" min="0" max="100" value="50" />
+        </label>
+        <button id="download">Baixar PNGs</button>
+      </aside>
+      <section class="stage">
+        <div class="panel">
+          <h3>OCT (B-scan)</h3>
+          <canvas id="oct" width="600" height="240"></canvas>
+        </div>
+        <div class="panel">
+          <h3>Campo Visual (pontos 24-2)</h3>
+          <svg id="vf" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

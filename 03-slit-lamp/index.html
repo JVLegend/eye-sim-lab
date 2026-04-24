@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slit Lamp Exam — eye-sim-lab</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Biomicroscopia — Lâmpada de Fenda</h1>
+      <p>Ajuste o feixe e identifique o achado no paciente virtual.</p>
+    </header>
+    <main>
+      <aside class="controls">
+        <label>Caso
+          <select id="caseSel"></select>
+        </label>
+        <label>Largura do feixe <span id="w-val">20</span>%
+          <input id="width" type="range" min="5" max="80" value="20" />
+        </label>
+        <label>Ângulo <span id="a-val">30</span>°
+          <input id="angle" type="range" min="-60" max="60" value="30" />
+        </label>
+        <label>Intensidade <span id="i-val">70</span>%
+          <input id="intensity" type="range" min="20" max="100" value="70" />
+        </label>
+        <label>Magnificação <span id="m-val">10</span>x
+          <input id="mag" type="range" min="6" max="25" value="10" />
+        </label>
+        <div class="diag">
+          <p><strong>Seu diagnóstico:</strong></p>
+          <div id="options"></div>
+          <p id="feedback" class="feedback"></p>
+        </div>
+      </aside>
+      <section class="stage">
+        <canvas id="canvas" width="900" height="700"></canvas>
+      </section>
+    </main>
+  </body>
+  <script type="module" src="/src/main.ts"></script>
+</html>
